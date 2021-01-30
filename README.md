@@ -1,18 +1,16 @@
 # magentowithdata
 
 Requirements:
-
-  *php version 7.2.34
+    *php version 7.2.34
   
-  *magento 2.3.5-p2
+    *magento 2.3.5-p2
 
 Database:
-
-  *user - root
+    *user - root
   
-  *password - 
+    *password - 
   
-  *database name - magentowithdata
+    *database name - magentowithdata
   
-  *import sql file
+    *import sql file
   
