@@ -1,0 +1,166 @@
+<h1>Post page</h1>
+<?php
+/*echo "<pre>";
+print_r($block->getEditRecord());*/
+if( !empty($block->getEditRecord())){
+    $postData = $block->getEditRecord();
+}else{
+    $postData = null;
+}
+//echo '<pre>'; print_r($postData);exit;
+?>
+<!--<form action="--><?php //echo $block->getFormAction() ?><!--" method="post">-->
+<form id="custom_form" class="form" method="post" action="<?php echo $block->getFormAction() ?>" data-mage-init='{"validation":{"rules": {"post_content": {"required":true}}}}' enctype="multipart/form-data">
+    <fieldset class="fieldset">
+    <input name="form_key" type="hidden" value="<?php echo $block->getFormKey();?>">
+    <input name="post_id" type="hidden" value="<?php  echo (isset($postData[0]['post_id']))?$postData[0]['post_id']:''?>">
+    <!--<input name="firstname" type="text">
+    <input name="lastname" type="text">
+    <input name="phone" type="text">
+    <input name="bookingTime" type="date">
+    <input type="submit" value="Send booking informations">-->
+        <div class="field name required">
+            <label class="label" for="field-1"><span>Name</span></label>
+            <div class="control">
+                <input name="name" id="name" title="name" value="<?php echo (!empty($postData[0]['name']))? $postData[0]['name']:''?>"  class="input-text" type="text" data-validate='{"required":true}' />
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="url-key"><span>url key</span></label>
+            <div class="control">
+                <input name="url_key" id="url-key" title="url key" value="<?php echo (!empty($postData[0]['url_key']))? $postData[0]['url_key']:''?>" type="text" class="input-text required-entry"/>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="field-4"><span>content</span></label>
+            <div class="control">
+                <input name="post_content" id="post-content" title="post content" value="<?php echo (!empty($postData[0]['post_content']))? $postData[0]['post_content']:''?>" class="input-text" type="text"/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="field-1"><span>tags</span></label>
+            <div class="control">
+                <input name="tags" id="tags" title="tags" value="<?php echo (!empty($postData[0]['tags']))? $postData[0]['tags']:''?>"  class="input-text" type="text" data-validate='{"required":true}'/>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label" for="field-1"><span>status</span></label>
+            <div class="control">
+                <input name="status" id="status" title="status" value="<?php echo (!empty($postData[0]['status']))? $postData[0]['status']:''?>"  class="input-text" type="text" data-validate='{"required":true}'/>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="field-1"><span>featured image</span></label>
+            <div class="control">
+                <input name="featured_image" id="featured-image" title="featured image" value="<?php echo (!empty($postData[0]['featured_image']))? $postData[0]['featured_image']:''?>"  class="input-text" type="file" data-validate='{"required":true}'/>
+            </div>
+        </div>
+        <div class="field required">
+            <label for="email_address" class="label"><span><?php echo __('Email') ?></span></label>
+            <div class="control">
+                <input type="email" name="email" id="email_address" value="<?php echo (!empty($postData[0]['email']))? $postData[0]['email']:''?>" title="<?php echo __('Email') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
+            </div>
+        </div>
+        <div class="field required">
+            <label for="mobile" class="label"><span><?php echo __('mobile') ?></span></label>
+            <div class="control">
+                <input type="text" name="mobile" id="mobile" value="<?= (isset($postData[0]['mobile']))? $postData[0]['mobile']:''?>" title="<?php echo __('mobile') ?>" class="input-text validate-digits mobileIN required-entry " >
+            </div>
+        </div>
+        <div class="field ">
+            <label class="field-label">
+                <span><?php echo __(' Date Picker')?></span>
+            </label>
+            <div class="field-control ">
+                <input class="control-text required-entry dateITA" name="cdate" id="datepicker" type="text" value="<?php echo (!empty($postData[0]['cdate']))? $postData[0]['cdate']:''?>">
+            </div>
+        </div>
+        <div class="field post_status">
+            <label for="post_status" class="label"><span>Post Status</span></label>
+            <div class="control">
+                <select id="post_status" name="post_status" title="Post Status" class="select validate-select">
+                    <option value="">Please Select Status.</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                </select>
+            </div>
+        </div>
+        <div class="field post_status">
+            <label for="post_status" class="label"><span>Gendor</span></label>
+            <label>
+                <input type="radio" value="Yes" name="radio_select" class="required-entry">
+                <span>yes</span>
+            </label>
+            <label>
+                <input type="radio" value="No" name="radio_select" class="required-entry">
+                <span>no</span>
+            </label>
+        </div>
+        <!--<div class="field frame_name required">
+            <label class="label" for="frame_name"><span><?php /*echo __('Option Name') */?></span></label>
+            <div class="control">
+                <select name="frame_name" id="frame_name" title="<?php /*echo __('Option Name') */?>" class="input-text" data-validate="{required:true}">
+                         <option value=""><?php /*echo __('Please Select Frame .') */?></option>
+                              <option value="value1"><?php /*echo __('Frontend Option 1') */?></option>
+                         <option value="value2"><?php /*echo __('Frontend Option 2') */?></option>
+                         <option value="value3"><?php /*echo __('Frontend Option 3') */?></option>
+                         <option value="value4"><?php /*echo __('Frontend Option 4') */?></option>
+                <option value="value5"><?php /*echo __('Frontend Option 5') */?></option>
+                </select>
+            </div>
+        </div>
+        <div class="field frame_color required">
+            <label class="label" for="frame_color">
+                <span><?php /*echo __('Option Title') */?></span>
+            </label>
+            <div class="control">
+                <select name="frame_color" id="frame_color" title="<?php /*echo __('Option Title') */?>" class="input-text" data-validate="{required:true}">
+                    <option value=""><?php /*echo __('Please Select Option') */?></option>
+                </select>
+            </div>
+        </div>-->
+    <!--<label>Name: <input name="name" type="text"></label>
+    <label>url key: <input name="url_key" type="text"></label>
+    <label>content: <input name="post_content" type="text"></label>
+    <label>tags: <input name="tags" type="text"></label>
+    <label>status: <input name="status" type="text"></label>
+    <label>feature image: <input name="featured_image" type="text"></label>-->
+    </fieldset>
+    <input type="submit" value="Send post informations">
+</form>
+<script type="text/javascript">
+    require(["jquery", "mage/calendar"], function ($) {
+        $('#datepicker').datepicker({
+                prevText: '&#x3c;zurück', prevStatus: '',
+                prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+                nextText: 'Vor&#x3e;', nextStatus: '',
+                nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+                monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'],
+                monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                dayNames: ['Sunday ', 'Monday', 'Tuesday ', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                showMonthAfterYear: true,
+                dateFormat: 'd/m/yy'
+            }
+        );
+    });
+</script>
+
+<script>
+    jQuery(document).on('change','#frame_name',function() {
+        var param = 'frame='+jQuery('#frame_name').val();
+        jQuery.ajax({
+            showLoader: true,
+            url: '<?php echo $block->getframeAction(); ?>',
+            data: param,
+            type: "GET",
+            dataType: 'json'
+        }).done(function (data) {
+            jQuery('#frame_color').empty();
+            jQuery('#frame_color').append(data.value);
+        });
+    });
+</script>

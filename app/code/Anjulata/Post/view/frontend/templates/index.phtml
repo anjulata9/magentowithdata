@@ -1,0 +1,133 @@
+<div class="row">
+    <div class="col-md-6"><h1>Post list</h1></div>
+    <div class="col-md-6">
+        <a href="<?= $block->getPostUrl(); ?>" class="action create primary"><span>New Post</span></a>
+    </div>
+</div>
+
+<!-- <div class="row">
+  <div class="block col-sm-4">.col-sm-4</div>
+  <div class="block col-sm-4">.col-sm-4</div>
+  <div class="col-sm-4">.col-sm-4</div>
+</div>
+ -->
+
+<?php
+//echo "<pre>";
+//echo "test";
+// echo $block->getChildHtml();
+echo $block->getTestValue();
+$collection = $block->getPostData();
+    echo "<table>";
+    echo "<tr>";
+    echo "<td>Id</td>";
+    echo "<td>Name</td>";
+    echo "<td>Url Key</td>";
+    echo "<td>Post Content</td>";
+    echo "<td>Tags</td>";
+    echo "<td>Status</td>";
+    echo "<td>Feature Image</td>";
+    echo "<td>Action</td>";
+    echo "</tr>";
+    foreach($collection as $item){
+        /*echo "<pre>";
+        print_r($item);
+        echo "</pre>";*/
+            echo "<tr>";
+            echo "<td>".$item['post_id']."</td>";
+            echo "<td>".$item['name']."</td>";
+            echo "<td>".$item['url_key']."</td>";
+            echo "<td>".$item['post_content']."</td>";
+            echo "<td>".$item['tags']."</td>";
+            echo "<td>".$item['status']."</td>";
+            echo "<td>".$item['featured_image']."</td>";
+            echo "<td><a href='".$block->getEditUrl($item['post_id'])."'>Edit</a> &nbsp;<a href='".$block->getDeleteUrl($item['post_id'])."'>Delete</a></td>";
+            echo "</tr>";
+    }
+    echo "</table>";
+?>
+
+
+<div id="accordion" data-mage-init='{
+        "accordion":{
+            "active": [1,2],
+            "collapsible": true,
+            "openedState": "active",
+            "multipleCollapsible": true
+        }}'>
+    <div data-role="collapsible">
+        <div data-role="trigger">
+            <h4>Title 1</h4>
+        </div>
+    </div>
+    <div data-role="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+
+    <div data-role="collapsible">
+        <div data-role="trigger">
+            <h4>Title 2</h4>
+        </div>
+    </div>
+    <div data-role="content"> It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+
+    <div data-role="collapsible">
+        <div data-role="trigger">
+            <h4>Title 3</h4>
+        </div>
+    </div>
+    <div data-role="content">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</div>
+</div>
+
+
+<div class="element-selector"></div>
+
+<div class="confirmation-modal-content">
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+</div>
+
+<script>
+require([
+    'jquery',
+    //'SwiftOtter_Test/js/custom-tabs',
+    'Magento_Ui/js/modal/confirm'
+], function ($) {
+    'use strict';
+    /*$(".element-selector").customTabs();    
+    $(".element-selector").customTabs("doSomething", "/hello"); */
+
+    /*$('.confirmation-modal-content').confirm({
+        title: $.mage.__('Confirmation Title'),
+        actions: {
+            confirm: function() {
+                // do something when the confirmation button is clicked
+            },
+            cancel: function() {
+                // do something when the cancel button is clicked
+            },
+            always: function() {
+                // do something when the modal is closed
+            }
+        },
+        buttons: [{
+            text: $.mage.__('Cancel'),
+            class: 'action-secondary action-dismiss',
+            click: function (event) {
+                this.closeModal(event);
+            }
+        }, {
+            text: $.mage.__('OK'),
+            class: 'action primary action-accept',
+            click: function (event) {
+                this.closeModal(event, true);
+            }
+        }, {
+            text: $.mage.__('New Action'),
+            class: 'action new',
+            click: function (event) {
+                // New action
+            }
+        }]
+    });*/
+
+
+});
+</script>

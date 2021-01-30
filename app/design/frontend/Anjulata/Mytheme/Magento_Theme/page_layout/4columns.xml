@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="empty"/>
+    <referenceContainer name="main.content">
+        <container name="column1" as="column_1" label="column one" htmlTag="div" htmlClass="column-float-left" />
+        <container name="column2" as="column_2" label="column two" htmlTag="div" htmlClass="column-float-left" />
+        <container name="column3" as="column_3" label="column three" htmlTag="div" htmlClass="column-float-left" />
+        <container name="column4" as="column_4" label="column four" htmlTag="div" htmlClass="column-float-left" />
+    </referenceContainer>
+</layout>
